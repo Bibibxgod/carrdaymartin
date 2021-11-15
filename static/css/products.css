@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+main{
+    font-family: 'Raleway', sans-serif;
+}
+
+main::before{
+    content: '';
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 80%;
+    z-index: -1;
+    background-color: #f1f1f1;
+}
+
+a{
+    text-decoration: none!important;
+}
+
+.products-tab a{
+    color: grey;
+}
+
+.products-tab a:hover{
+    color: grey;
+}
+
+.products-tab{
+    width:100%;
+    margin-bottom: 100px;
+    padding-top: 100px;
+}
+
+.li{
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 2px solid grey;
+}
+
+
+.products-section img{
+    width: 100%;
+}
+
+.products-card a{
+    padding: 25px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+}
+
+
+.products-section{
+    padding-bottom: 50px;
+}
+
+.products-card.inf p{
+    font-size: 0.9rem;
+    padding-bottom: 10px;
+}
+
+.products-card.inf p:last-child{
+    padding-bottom: 0;
+}
+
+.products-section h3{
+    color: black;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+@media (max-width: 991px){
+    .products-section h3{
+        font-size: 2.7rem;
+    }
+
+    .products-card.inf p{
+        font-size: 1.8rem!important;
+    }
+
+    .li{
+        font-size: 2.5rem;
+        font-weight: 600;
+        text-align: center;
+        color: grey;
+        padding: 10px 0;
+        border-bottom: 5px solid grey;
+    }
+}

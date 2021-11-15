@@ -1,0 +1,54 @@
+{% extends 'main.html' %}
+
+{% block title %}
+История
+{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/products.css') }}">
+{% endblock %}
+
+{% block body %}
+<main>
+    <div class="products-tab">
+        <div class="container-big">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 li"><a href="/products/leather">Leather Care</a></div>
+                <div class="col-lg-3 col-md-6 li"><a href="/products/coat">Coat Care</a></div>
+                <div class="col-lg-3 col-md-6 li"><a href="/products/hoof">Hoof Care</a></div>
+                <div style="border-bottom: 2px solid #708B31;" class="col-lg-3 col-md-6 li"><a style="color: #708B31;"
+                        href="/products/health">Health Care</a></div>
+            </div>
+        </div>
+    </div>
+    <div class="products-section">
+        <div class="container-big">
+            <div class="row">
+                <div class="col-lg-3 col-md-12 products-card inf">
+                    <p>В нашем ассортименте репеллентов от насекомых есть выбор ингредиентов в зависимости от
+                        потребностей вашей лошади. Все наши репелленты состоят из наиболее эффективных ингредиентов на
+                        оптимальном уровне, чтобы обеспечить максимальную силу и длительную защиту.</p>
+                    <p>
+                        Все хотят, чтобы их лошадь не чувствовала дискомфорта. Поэтому поддержание чистоты ран,
+                        облегчение состояния после тренировок и предотвращение сезонных проблем являются первоочередными
+                        задачами. Мы предлагаем прямой подход к управлению здравоохранением, который экономит время,
+                        деньги и усилия, обеспечивая при этом хороший уход за вашей лошадью.
+
+                    </p>
+                </div>
+
+                {% for el in productitem %}
+                {% if el.Type == 'health' %}
+                <div class="col-lg-3 col-md-6 products-card">
+                    <a href="/products/{{el.Type}}/{{el.id}}">
+                        <img src="../static/img/{{el.id}}.png" alt="">
+                        <h3>{{el.name}}</h3>
+                    </a>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

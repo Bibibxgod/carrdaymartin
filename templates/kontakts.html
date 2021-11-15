@@ -1,0 +1,88 @@
+{% extends 'main.html' %}
+
+{% block title %}
+Контакты
+{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/kontakts.css') }}">
+{% endblock %}
+
+{% block body %}
+<main>
+    <div class="kontakts">
+        <div class="container-big">
+            <h3 class="article">Обратная связь</h3>
+            <div class="row">
+                <div class="col-lg-6 col-sm-12 line">
+                    <h3>Отправте сообщение</h3>
+                    <p>Для получения дополнительной информации о наших продуктах свяжитесь с нашей службой поддержки
+                        клиентов, заполнив форму ниже.</p>
+                    <form action="/kontakts" method="post">
+                        <p>
+                            <label>
+                                <span class="">
+                                    <input name="name" id="name" type="text" placeholder="Заголовок">
+                                </span>
+                            </label>
+                            <br>
+                            <label>
+                                <span class="">
+                                    <input name="email" id="email" type="text" placeholder="Почта">
+                                </span>
+                            </label>
+                            <br>
+                            <label>
+                                <span class="">
+                                    <input type="text" name="telephone" id="telephone" placeholder="Номер телефона">
+                                </span>
+                            </label>
+                            <br>
+                            <label>
+                                <span class="">
+                                    <textarea name="message" id="message" cols="40" rows="10"
+                                        placeholder="Сообщение"></textarea>
+                                </span>
+                            </label>
+                        </p>
+                        <p>
+                            <input class="button" type="submit" value="Send">
+                        </p>
+                    </form>
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                    <div class="right">
+                        <h3>Главный офис в Великобритании</h3>
+                        <p>
+                            Carr & Day & Martin Ltd, Woodland Granaries,
+                            <br>
+                            Narrow Lane, Wymeswold,
+                            <br>
+                            Loughborough,
+                            <br>
+                            LE12 6SD, UK
+                            <br>
+                        </p>
+                        <h3>Главный офис в Великобритании</h3>
+                        <p>
+                            Carr & Day & Martin Ltd, Woodland Granaries,
+                            <br>
+                            Narrow Lane, Wymeswold,
+                            <br>
+                            Loughborough,
+                            <br>
+                            LE12 6SD, UK
+                            <br>
+                        </p>
+                        <p>
+                            <a class="button" href="/shops">Найти ближайший магазин</a>
+                        </p>
+                        <div class="image-block">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

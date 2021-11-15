@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    {% block link %}{% endblock %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/css.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/slick.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <div class="container-xl big">
+            <div class="row justify-content-center">
+                <div class="logo">
+                    <a href="/home">
+                        <img src="{{ url_for('static', filename='../static/img/logo.png') }}">
+                    </a>
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mini-navbar"
+                    aria-controls="mini-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"><img src="{{ url_for('static', filename='../static/img/menu.png') }}"></span>
+                </button>
+                <nav class="navbar navbar-expand-lg h-100">
+                    <div class="collapse navbar-collapse justify-content-center" id="mini-navbar">
+                        <ul class="navbar-nav mr-0 mb-2 mb-lg-0">
+                            <li class="nav-item dropdown">
+                                <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                                    aria-expanded="false">
+                                    ПРОДУКЦИЯ
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item one-color" href="/products/hoof">HOOF
+                                            CARE</a></li>
+                                    <li><a class="dropdown-item two-color" href="/products/leather">LEATHER
+                                            CARE</a></li>
+                                    <li><a class="dropdown-item three-color" href="/products/health">HEALTH
+                                            CARE</a></li>
+                                    <li><a class="dropdown-item four-color" href="/products/coat">COAT
+                                            CARE</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/history">ИСТОРИЯ КОМПАНИИ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/explore">ОТЗЫВЫ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/shops">ГДЕ КУПИТЬ В РОССИИ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/kontakts">КОНТАКТЫ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/create">Create</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    {% block body %}{% endblock %}
+
+    <footer>
+        <div class="container-big">
+            <div class="row">
+                <div class="col-lg-4 col-sm-12 flex">
+                    <h1><a href="/">Carr & Day & Martin</a></h1>
+                    <div class="col-12 logos up">
+                        <a href=""><span class="vk"></span></a>
+                        <a href=""><span class="instagram"></span></a>
+                    </div> 
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="content">
+                        <h3>Контактная информация</h3>
+                        <ul>
+                            <li>Телефон: +123456789</li>
+                            <li>Почта: example@gmail.com</li>
+                            <li>Адрес: eeeeeeeee</li>
+                            <li>График работы с 8 до 5</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="content">
+                        <h3>Наша продукция</h3>
+                        <ul>
+                            <li><span class="leather"></span><a href="/products/leather">Leather Care</a></li>
+                            <li><span class="hoof"></span><a href="/products/hoof">Hoof Care</a></li>
+                            <li><span class="coat"></span><a href="/products/coat">Coat Care</a></li>
+                            <li><span class="health"></span><a href="/products/health">Health Care</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row down">
+                <div class="col-12 logos">
+                    <a href=""><span class="vk"></span></a>
+                    <a href=""><span class="instagram"></span></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='../static/js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='../static/js/slick.min.js') }}"></script>
+</body>
+
+</html>

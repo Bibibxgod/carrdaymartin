@@ -1,0 +1,54 @@
+{% extends 'main.html' %}
+
+{% block title %}
+История
+{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/products.css') }}">
+{% endblock %}
+
+{% block body %}
+<main>
+    <div class="products-tab">
+        <div class="container-big">
+            <div class="row">
+                <div style="border-bottom: 2px solid #EE7202;" class="col-lg-3 col-md-6 li"><a style="color: #EE7202;"
+                        href="/products/leather">Leather Care</a></div>
+                <div class="col-lg-3 col-md-6 li"><a href="/products/coat">Coat Care</a></div>
+                <div class="col-lg-3 col-md-6 li"><a href="/products/hoof">Hoof Care</a></div>
+                <div class="col-lg-3 col-md-6 li"><a href="/products/health">Health Care</a></div>
+            </div>
+        </div>
+    </div>
+    <div class="products-section">
+        <div class="container-big">
+            <div class="row">
+                <div class="col-lg-3 col-md-12 products-card inf">
+                    <p>Кожа содержит увлажняющие и смазочные масла, которые постепенно теряются. Вместо того, чтобы
+                        сгибаться и растягиваться, волокна становятся тугими и жесткими и в конечном итоге ослабляются и
+                        ломаются, вызывая трещины. Наши специально разработанные масла и бальзам оживят волокна кожи,
+                        чтобы они снова могли свободно двигаться. Если липкость не будет использоваться в течение
+                        некоторого времени, ее также следует бережно хранить, чтобы сохранить ее состояние.
+                    </p>
+                    <p>
+                        Готовая кожа состоит примерно из 10% жиров и масел и примерно 14% воды, которые обеспечивают
+                        смазку коллагеновых волокон, а остальное составляет белок. Регулярный уход и чистка поддерживают
+                        этот баланс и его упругие свойства.</p>
+                </div>
+
+                {% for el in productitem %}
+                {% if el.Type == 'leather' %}
+                <div class="col-lg-3 col-md-6 products-card">
+                    <a href="/products/{{el.Type}}/{{el.id}}">
+                        <img src="../static/img/{{el.id}}.png" alt="">
+                        <h3>{{el.name}}</h3>
+                    </a>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

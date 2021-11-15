@@ -1,0 +1,55 @@
+{% extends 'main.html' %}
+
+{% block title %}
+История
+{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/products.css') }}">
+{% endblock %}
+
+{% block body %}
+<main>
+    <div class="products-tab">
+        <div class="container-big">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 li"><a href="/products/leather">Leather Care</a></div>
+                <div style="border-bottom: 2px solid #009CC4;" class="col-lg-3 col-md-6 li"><a style="color: #009CC4;"
+                        href="/products/coat">Coat Care</a></div>
+                <div class="col-lg-3 col-md-6 li"><a href="/products/hoof">Hoof Care</a></div>
+                <div class="col-lg-3 col-md-6 li"><a href="/products/health">Health Care</a></div>
+            </div>
+        </div>
+    </div>
+    <div class="products-section">
+        <div class="container-big">
+            <div class="row">
+                <div class="col-lg-3 col-md-12 products-card inf">
+                    <p>Даже при тщательном уходе иногда лошадям просто нужно хорошо помыться. Все шампуни Carr & Day &
+                        Martin специально разработаны для ухода за кожей и шерстью вашей лошади. Если вашей лошади нужна
+                        интенсивная чистка, помощь с чувствительной кожей или вы готовитесь к шоу, наша линейка шампуней
+                        Gallop станет идеальным решением.</p>
+                    <p>
+                        Независимо от того, сколько времени вы тратите на уход за своей лошадью, вы всегда можете
+                        воспользоваться небольшой дополнительной помощью. Постоянное расчесывание некондиционных волос
+                        приводит к ломкости и тонкому, тусклому и безжизненному виду. Эти продукты будут
+                        кондиционировать и отполировать для получения великолепных результатов, а также сохранят внешний
+                        вид и здоровье вашей лошади.
+                    </p>
+                </div>
+
+                {% for el in productitem %}
+                {% if el.Type == 'coat' %}
+                <div class="col-lg-3 col-md-6 products-card">
+                    <a href="/products/{{el.Type}}/{{el.id}}">
+                        <img src="../static/img/{{el.id}}.png" alt="">
+                        <h3>{{el.name}}</h3>
+                    </a>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

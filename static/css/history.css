@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+.history{
+    font-family: 'Raleway', sans-serif;
+}
+
+.history::before{
+    content: '';
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 30%;
+    z-index: -1;
+    background-color: #f1f1f1;
+}
+
+.blockarea:nth-child(2n){
+    background: #f1f1f1;
+    height: 100%;
+    width: 100%;
+}
+
+p.article{
+    font-size: 2.3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    padding: 50px 50px 0;
+}
+
+p.year{
+    font-size: 1.7rem!important;
+    color: #ee7203;
+    margin-top: 0;
+    padding-bottom: 20px;
+}
+
+.left p.year::before{
+    position: relative;
+    content: '';
+    width: 50px;
+    background: #ee7203;
+    height: 1px;
+    display: inline-block;
+    top: -9px;
+    left: inherit;
+    right: -141px;
+}
+
+.right p.year::after{
+    content: '';
+    width: 50px;
+    background: #ee7203;
+    height: 1px;
+    display: inline-block;
+    top: -9px;
+    right: inherit;
+    left: -141px;
+    position: relative;
+}
+
+.history img{
+    width: 100%;
+}
+
+.right{
+    text-align: left;
+}
+
+.left{
+    text-align: right;
+}
+
+h3{
+    font-size: 1.5rem!important;
+    padding-bottom: 20px;
+    margin-bottom: 0!important;
+}
+
+h2{
+    font-size: 1.8rem!important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+    text-align: center; 
+}
+
+p{
+    font-size: 1rem!important;
+}
+
+.container-small .block{
+    padding: 50px;
+}
+
+.line{
+    border-right: 1px solid black;
+}
+
+.img{
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 991px){
+    .img{
+        justify-content: center!important;
+    }
+
+    h3{
+        font-size: 2.5rem!important;
+    }
+
+    h2{
+        font-size: 2.6rem!important;
+    }
+
+    p.year{
+        font-size: 2.3rem!important;
+    }
+
+    p{
+        font-size: 1.8rem!important;
+    }
+
+    .blockarea{
+        max-height: 2000px!important;
+        min-height: 800px!important;
+        align-items: center;
+        display: flex;
+    }
+
+    .line{
+        border: 0;
+    }
+
+    .left p.year::before,.right p.year::after{
+        display: none;
+    }
+
+    .img{
+        display: none;
+    }
+
+}
+
+.img.left{
+    justify-content: right;
+}
+
+.img.right{
+    justify-content: left;
+}
+
+.blockarea .row{
+    height: 100%;
+}
+
+.block{
+    min-height: 500px;
+    max-height: 800px;
+}
+
+.blockarea p{
+    font-size: 0.9rem;
+}

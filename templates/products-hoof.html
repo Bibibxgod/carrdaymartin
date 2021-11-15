@@ -1,0 +1,59 @@
+{% extends 'main.html' %}
+
+{% block title %}
+История
+{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/products.css') }}">
+{% endblock %}
+
+{% block body %}
+<main>
+    <div class="products-tab">
+        <div class="container-big">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 li"><a href="/products/leather">Leather Care</a></div>
+                <div class="col-lg-3 col-md-6 li"><a href="/products/coat">Coat Care</a></div>
+                <div style="border-bottom: 2px solid #C51A1B;" class="col-lg-3 col-md-6 li"><a style="color: #C51A1B;"
+                        href="/products/hoof">Hoof Care</a></div>
+                <div class="col-lg-3 col-md-6 li"><a href="/products/health">Health Care</a></div>
+            </div>
+        </div>
+    </div>
+    <div class="products-section">
+        <div class="container-big">
+            <div class="row">
+                <div class="col-lg-3 col-md-12 products-card inf">
+                    <p>Чувствительность копыт хорошо известна, но нет простого единственного решения для устранения всех
+                        проблем с копытами. Поэтому структурированный распорядок управления имеет важное значение. Эти
+                        традиционные и незаменимые продукты были опробованы и зарекомендовали себя для повседневного
+                        ухода, чтобы поддерживать, улучшать или защищать качество копыт и рогов.</p>
+                    <p>
+                        Правильный уход за копытами лошадей обеспечивает долговременную целостность копыт. помните: «Нет
+                        копыт - нет лошади» Мы рекомендуем трехэтапный индивидуальный подход к уходу за копытами,
+                        который включает:</p>
+                    <p>
+                        1. Добавки для борьбы с дефицитом питательных веществ. Ежедневная добавка для копыт
+                        Cornucrescine.
+                        2. Стимуляция здорового новообразования. Корнукресциновая мазь для копыт.
+                        3. Уход и уход за существующей копытной стенкой. Для завершения выберите из нашей линейки
+                        Cornucrescine Daily Hoof.</p>
+                    </p>
+                </div>
+
+                {% for el in productitem %}
+                {% if el.Type == 'hoof' %}
+                <div class="col-lg-3 col-md-6 products-card">
+                    <a href="/products/{{el.Type}}/{{el.id}}">
+                        <img src="../static/img/{{el.id}}.png" alt="">
+                        <h3>{{el.name}}</h3>
+                    </a>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
