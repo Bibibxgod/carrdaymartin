@@ -596,3 +596,7 @@ h3.article{
   font-size: 1.9rem;
   font-weight: 700;
 }
+
+footer a:hover{
+  color: #f1f1f1;
+}

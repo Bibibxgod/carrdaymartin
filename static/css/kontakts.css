@@ -103,6 +103,10 @@ a.button:hover{
     height: 30vh;
 }
 
+p.kontakts-alert{
+    margin: 0!important;
+}
+
 @media (max-width: 991px){
     .kontakts h3{
         font-size: 2.8rem;
@@ -150,5 +154,10 @@ a.button:hover{
     main::before{
         height: 85%;
     }
+
+    .close{
+        font-size: 5rem!important;
+    }
+
 
 }

@@ -15,6 +15,20 @@
             <h3 class="article">Обратная связь</h3>
             <div class="row">
                 <div class="col-lg-6 col-sm-12 line">
+                    {% with messages = get_flashed_messages() %}
+                      {% if messages %}
+                        
+                         {% for message in messages %}
+                          <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <p class="kontakts-alert">{{ message }}</p>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span class="alert dismiss" aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                         {% endfor %}
+                      
+                      {% endif %}
+                    {% endwith %}
                     <h3>Отправте сообщение</h3>
                     <p>Для получения дополнительной информации о наших продуктах свяжитесь с нашей службой поддержки
                         клиентов, заполнив форму ниже.</p>
