@@ -24,7 +24,8 @@ class ProductItem(db.Model):
 @app.route('/')
 @app.route('/home')
 def index():
-    return render_template('index.html')
+    Productitem = ProductItem.query.all()
+    return render_template('index.html', Productitem=Productitem)
 
 @app.route('/products/leather')
 def productsleather():
@@ -50,8 +51,8 @@ def productshealth():
 def product_card(Type,id):
     productitem = ProductItem.query.get(Type)
     productitem = ProductItem.query.get(id)
-    path_image = "src=" +"{{ url_for('static', filename='../static/img/" + id + ".png') }}"
-    return render_template('product-card.html', productitem=productitem, path_image=path_image)
+    Productitem = ProductItem.query.all()
+    return render_template('product-card.html', productitem=productitem, Productitem=Productitem)
 
 @app.route('/history')
 def history():
@@ -95,8 +96,8 @@ def kontakts():
         
         msg = MIMEMultipart()
         
-        from_email = 'nakozhem@gmail.com'
-        password = '!ZAQ1234esz!'
+        from_email = 'carrdaymartinru@gmail.com'
+        password = '$VFR4567ygv$'
         to_email = 'nnakozhemm@gmail.com'
         text = 'Почта: ' + email + '\n' + 'Телефон: ' + telephone + '\n' + 'Заголовок: ' + name + '\n' + 'Сообщение: ' + message + '\n'
         

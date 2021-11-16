@@ -104,15 +104,13 @@ a.button:hover{
 }
 
 @media (max-width: 991px){
+    .kontakts h3{
+        font-size: 2.8rem;
+    }
+
     .right{
         float: left;
         width: 100%;
-    }
-}
-
-@media (min-width:375px) and (max-width:891px){
-    .kontakts h3{
-        font-size: 2.8rem;
     }
 
     h3.article{
@@ -137,7 +135,7 @@ a.button:hover{
     }
 
     a.button {
-        font-size: 2.9rem!important;
+        font-size: 2.3rem!important;
         padding: 20px 50px;
     }
     

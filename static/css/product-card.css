@@ -50,6 +50,7 @@ a.back:hover{
 }
 
 .product-item h3{
+    font-weight: 750;
     font-size: 1.2rem;
     padding-top: 20px;
 }

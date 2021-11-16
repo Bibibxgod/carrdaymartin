@@ -16,7 +16,7 @@ Carr & Day & Martin
                                 <div class="col-12">
                                     <p>Мировые Лидеры</p>
                                     <p>В Области Ухода За Лошадьми</p>
-                                    <button class="btn">НАШ АССОРТИМЕНТ</button>
+                                    <button class="btn"><a href="/products/hoof">НАШ АССОРТИМЕНТ</a></button>
                                 </div>
                             </div>
                         </div>
@@ -35,14 +35,14 @@ Carr & Day & Martin
                 <div class="col-6">
                     <div class="box first">
                         <div class="bg">
-                            <a href="#">
+                            <a href="/products/leather">
                                 <img src="../static/img/leather.png">
                             </a>
                         </div>
                     </div>
                     <div class="box second">
                         <div class="bg">
-                            <a href="#">
+                            <a href="/products/health">
                                 <img src="../static/img/health.png">
                             </a>
                         </div>
@@ -51,14 +51,14 @@ Carr & Day & Martin
                 <div class="col-6">
                     <div class="box third">
                         <div class="bg">
-                            <a href="#">
+                            <a href="/products/coat">
                                 <img src="../static/img/coat.png">
                             </a>
                         </div>
                     </div>
                     <div class="box fouth">
                         <div class="bg">
-                            <a href="#">
+                            <a href="/products/hoof">
                                 <img src="../static/img/hoof.png">
                             </a>
                         </div>
@@ -71,69 +71,14 @@ Carr & Day & Martin
         <div class="container-big">
             <h2>Мы Рекомендуем</h2>
             <div class="slider">
+                {% for el in Productitem %}
                 <div class="slider-item">
-                    <a href="#">
-                        <img src="../static/img/slider-item1.png" alt="slider-item">
-                        <p>Gallop Extra</p>
-                        <p>Шампунь повышенной прочности</p>
+                    <a href="/products/{{el.Type}}/{{el.id}}">
+                        <img src="{{ url_for('static', filename='../static/img/')}}{{el.id}}.png" alt="slider-item">
+                        <p class="product name">{{ el.name }}</p>
                     </a>
                 </div>
-                <div class="slider-item">
-                    <a href="#">
-                        <img src="../static/img/slider-item2.png" alt="slider-item">
-                        <p>Gallop Extra</p>
-                        <p>Шампунь повышенной прочности</p>
-                    </a>
-                </div>
-                <div class="slider-item">
-                    <a href="#">
-                        <img src="../static/img/slider-item3.png" alt="slider-item">
-                        <p>Gallop Extra</p>
-                        <p>Шампунь повышенной прочности</p>
-                    </a>
-                </div>
-                <div class="slider-item">
-                    <a href="#">
-                        <img src="../static/img/slider-item4.png" alt="slider-item">
-                        <p>Gallop Extra</p>
-                        <p>Шампунь повышенной прочности</p>
-                    </a>
-                </div>
-                <div class="slider-item">
-                    <a href="#">
-                        <img src="../static/img/slider-item1.png" alt="slider-item">
-                        <p>Gallop Extra</p>
-                        <p>Шампунь повышенной прочности</p>
-                    </a>
-                </div>
-                <div class="slider-item">
-                    <a href="#">
-                        <img src="../static/img/slider-item1.png" alt="slider-item">
-                        <p>Gallop Extra</p>
-                        <p>Шампунь повышенной прочности</p>
-                    </a>
-                </div>
-                <div class="slider-item">
-                    <a href="#">
-                        <img src="../static/img/slider-item2.png" alt="slider-item">
-                        <p>Gallop Extra</p>
-                        <p>Шампунь повышенной прочности</p>
-                    </a>
-                </div>
-                <div class="slider-item">
-                    <a href="#">
-                        <img src="../static/img/slider-item3.png" alt="slider-item">
-                        <p>Gallop Extra</p>
-                        <p>Шампунь повышенной прочности</p>
-                    </a>
-                </div>
-                <div class="slider-item">
-                    <a href="#">
-                        <img src="../static/img/slider-item4.png" alt="slider-item">
-                        <p>Gallop Extra</p>
-                        <p>Шампунь повышенной прочности</p>
-                    </a>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </section>

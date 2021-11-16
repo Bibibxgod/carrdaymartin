@@ -333,10 +333,14 @@ main .top-banner .gradient {
   border-color: black;
   color: black;
   font-size: 1.3rem;
-  font-family: "Playfair Display", serif;
   background-color: rgba(0, 0, 0, 0);
   padding: 5px 45px;
   border-radius: 0;
+}
+
+.top-banner .btn a{
+  text-decoration: none;
+  color: black;
 }
 
 .top-banner .btn:hover {

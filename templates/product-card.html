@@ -23,11 +23,11 @@
                     <h1>{{ productitem.name }}</h1>
                     <h3>{{ productitem.name }}</h3>
                     <p>{{ productitem.smallDecription }}</p>
-                    <h3>Description</h3>
+                    <h3>Описание</h3>
                     <p>{{ productitem.decription }}</p>
-                    <h3>Application</h3>
+                    <h3>Как использовать</h3>
                     <p>{{ productitem.application }}</p>
-                    <h3>Size: {{ productitem.size }}</h3>
+                    <h3>Размер: {{ productitem.size }}</h3>
                     <p class="next"><a class="button" href="/shops">Где купить</a></p>
                 </div>
             </div>
@@ -37,69 +37,16 @@
         <div class="container-big">
             <h2>Мы Рекомендуем</h2>
             <div class="slider">
+                {% for el in Productitem %}
+                {% if el.id != productitem.id %}
                 <div class="slider-item">
-                    <a href="#">
-                        <img src="{{ url_for('static', filename='../static/img/slider-item1.png') }}" alt="slider-item">
-                        <p>Gallop Extra</p>
-                        <p>Шампунь повышенной прочности</p>
+                    <a href="/products/{{el.Type}}/{{el.id}}">
+                        <img src="{{ url_for('static', filename='../static/img/')}}{{el.id}}.png" alt="slider-item">
+                        <p class="product name">{{ el.name }}</p>
                     </a>
                 </div>
-                <div class="slider-item">
-                    <a href="#">
-                        <img src="{{ url_for('static', filename='../static/img/slider-item2.png') }}" alt="slider-item">
-                        <p>Gallop Extra</p>
-                        <p>Шампунь повышенной прочности</p>
-                    </a>
-                </div>
-                <div class="slider-item">
-                    <a href="#">
-                        <img src="{{ url_for('static', filename='../static/img/slider-item3.png') }}" alt="slider-item">
-                        <p>Gallop Extra</p>
-                        <p>Шампунь повышенной прочности</p>
-                    </a>
-                </div>
-                <div class="slider-item">
-                    <a href="#">
-                        <img src="{{ url_for('static', filename='../static/img/slider-item4.png') }}" alt="slider-item">
-                        <p>Gallop Extra</p>
-                        <p>Шампунь повышенной прочности</p>
-                    </a>
-                </div>
-                <div class="slider-item">
-                    <a href="#">
-                        <img src="{{ url_for('static', filename='../static/img/slider-item1.png') }}" alt="slider-item">
-                        <p>Gallop Extra</p>
-                        <p>Шампунь повышенной прочности</p>
-                    </a>
-                </div>
-                <div class="slider-item">
-                    <a href="#">
-                        <img src="{{ url_for('static', filename='../static/img/slider-item2.png') }}" alt="slider-item">
-                        <p>Gallop Extra</p>
-                        <p>Шампунь повышенной прочности</p>
-                    </a>
-                </div>
-                <div class="slider-item">
-                    <a href="#">
-                        <img src="{{ url_for('static', filename='../static/img/slider-item3.png') }}" alt="slider-item">
-                        <p>Gallop Extra</p>
-                        <p>Шампунь повышенной прочности</p>
-                    </a>
-                </div>
-                <div class="slider-item">
-                    <a href="#">
-                        <img src="{{ url_for('static', filename='../static/img/slider-item4.png') }}" alt="slider-item">
-                        <p>Gallop Extra</p>
-                        <p>Шампунь повышенной прочности</p>
-                    </a>
-                </div>
-                <div class="slider-item">
-                    <a href="#">
-                        <img src="{{ url_for('static', filename='../static/img/slider-item1.png') }}" alt="slider-item">
-                        <p>Gallop Extra</p>
-                        <p>Шампунь повышенной прочности</p>
-                    </a>
-                </div>
+                {% endif %}
+                {% endfor %}
             </div>
         </div>
     </section>
