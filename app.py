@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from datetime import datetime
 
 app = Flask(__name__)
 app.secret_key = 'zxczxczxczxc'
@@ -23,6 +24,16 @@ class ProductItem(db.Model):
     def __repr__(self):
         return '<ProductItem %r>' % self.id
 
+
+class Reviews(db.Model):
+    id = db.Column(db.Integer, primary_key=True, nullable=False)
+    text = db.Column(db.String, nullable=False)
+    date = db.Column(db.DateTime, default=datetime.utcnow)
+    name = db.Column(db.String, nullable=False)
+    spam = db.Column(db.Boolean, nullable=False, default=False)
+    
+    def __repr__(self):
+        return '<Reviews %r>' % self.id
 
 @app.route('/')
 @app.route('/home')
@@ -68,9 +79,39 @@ def history():
     return render_template('history.html')
 
 
-@app.route('/explore')
+@app.route('/reviews', methods=['POST', 'GET'])
 def explore():
-    return render_template('explore.html')
+    if request.method == 'POST':
+        text = request.form['text']
+        name = request.form['name']
+        
+        reviews = Reviews(name=name, text=text)
+        
+        db.session.add(reviews)
+        db.session.commit()
+        
+        msg = MIMEMultipart()
+
+        from_email = 'carrdaymartinru@gmail.com'
+        password = '$VFR4567ygv$'
+        to_email = 'nnakozhemm@gmail.com'
+        text = 'Имя: ' + name + '\n' + 'Текст: ' + text
+
+        if len(name or text) == 0:
+            flash('Это поле обязательно')
+            return redirect(request.url)
+
+        msg.attach(MIMEText(text, 'plain'))
+        server = smtplib.SMTP('smtp.gmail.com: 587')
+        server.starttls()
+        server.login(from_email, password)
+        server.sendmail(from_email, to_email, msg.as_string())
+        server.quit()
+        
+        return redirect(request.url)
+        
+    
+    return render_template('reviews.html')
 
 
 @app.route('/create', methods=['POST', 'GET'])
@@ -116,21 +157,19 @@ def kontakts():
         text = 'Почта: ' + email + '\n' + 'Телефон: ' + telephone + '\n' + \
             'Заголовок: ' + name + '\n' + 'Сообщение: ' + message + '\n'
 
-        if len(name or email or telephone or message) == 0:
-            flash('Это поле обязательно')
+        if len(name and email and telephone and message) <= 4:
+            flash('Все поля обязательны')
             return redirect(request.url)
-
-        msg.attach(MIMEText(text, 'plain'))
-        server = smtplib.SMTP('smtp.gmail.com: 587')
-        server.starttls()
-        server.login(from_email, password)
-        server.sendmail(from_email, to_email, msg.as_string())
-        server.quit()
+        else:
+            msg.attach(MIMEText(text, 'plain'))
+            server = smtplib.SMTP('smtp.gmail.com: 587')
+            server.starttls()
+            server.login(from_email, password)
+            server.sendmail(from_email, to_email, msg.as_string())
+            server.quit()
             
-        
-        
-        flash("Вы успешно отправили свое сообщение, мы ответим вам в ближайшее время.")
-        return redirect(request.url)
+            flash("Вы успешно отправили свое сообщение, мы ответим вам в ближайшее время.")
+            return redirect(request.url)
 
     else:
         return render_template('kontakts.html')

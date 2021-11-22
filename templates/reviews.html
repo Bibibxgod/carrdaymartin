@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+
+{% block title %}
+История
+{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" href="../static/css/kontakts.css">
+{% endblock %}
+
+{% block body %}
+<section class="reviews">
+    <div class="container-big">
+        <form action="/reviews" method="post">
+            <p><label><span class=""><input type="text" name="name" id="name" placeholder="name"><br></span></label>
+                <label><span class=""></span><input type="text" name="text" id="text" placeholder="text"><br></span></label>
+                <label><span class=""></span><input type="submit" value="send"><br></span></label>
+            </p>
+        </form>
+    </div>
+</section>
+{% endblock %}
