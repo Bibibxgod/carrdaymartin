@@ -4,6 +4,7 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from datetime import datetime
+from email.message import EmailMessage
 
 app = Flask(__name__)
 app.secret_key = 'zxczxczxczxc'
@@ -78,6 +79,13 @@ def product_card(Type, id):
 def history():
     return render_template('history.html')
 
+@app.route('/review/reject/<string:id>')
+def review_reject(id):
+    review = Reviews.query.get_or_404(id)
+    if request.method == 'POST':
+        db.session.delete(review)
+        db.session.commit()
+    return render_template('reviews.html')
 
 @app.route('/reviews', methods=['POST', 'GET'])
 def explore():
@@ -90,18 +98,81 @@ def explore():
         db.session.add(reviews)
         db.session.commit()
         
+        reviews = Reviews.query.all()
+        
+        for el in reviews:
+            if name == el.name:
+                reviewId = str(el.id)
+        
         msg = MIMEMultipart()
+        email = EmailMessage()
 
         from_email = 'carrdaymartinru@gmail.com'
         password = '$VFR4567ygv$'
         to_email = 'nnakozhemm@gmail.com'
-        text = 'Имя: ' + name + '\n' + 'Текст: ' + text
+        text = """<!DOCTYPE html>
+                        <html lang="en">
+
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                            <title>Document</title>
+                            <style>
+                                @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+                                body {
+                                    font-family: 'Raleway', sans-serif !important;
+                                    margin: 0;
+                                    padding: 50px;
+                                }
+
+                                input{
+                                    border-bottom: 2px solid black!important;
+                                    padding: 10px 10px !important;
+                                    height: auto!important;
+                                    box-sizing: inherit!important;
+                                    margin-bottom: 30px;
+                                    border: none;
+                                    width: 100%;
+                                    background: none!important;
+                                }
+
+                                label{
+                                    width: 50%;
+                                }
+
+                                input.button{
+                                    width: 30%;
+                                    border: 2px solid black;
+                                    background: black!important;
+                                    color: white;
+                                }
+                            </style>
+                        </head>
+
+                        <body>
+                            <section class="email">
+                                <h3 class="article">Отзыв</h3>
+                                <p>Имя:""" + name + """</p>
+                                <p>Текст отзыва:""" + text + """</p>
+                                <p>ID:""" + reviewId + """</p>
+                                <form action="/review/accept/""" + reviewId + """" method="post">
+                                    <label><span><input class="button" type="submit" value="Не спам"></span></label>
+                                </form>
+                                <form action="/review/reject/""" + reviewId + """"  method="post">
+                                    <label><span><input class="button" type="submit" value="Спам"></span></label>
+                                </form>
+                            </section>
+                        </body>
+
+                        </html>"""
 
         if len(name or text) == 0:
             flash('Это поле обязательно')
             return redirect(request.url)
 
-        msg.attach(MIMEText(text, 'plain'))
+        msg.attach(MIMEText(text, 'html'))
         server = smtplib.SMTP('smtp.gmail.com: 587')
         server.starttls()
         server.login(from_email, password)

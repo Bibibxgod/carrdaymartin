@@ -1,0 +1,35 @@
+.reviews input{
+    border-bottom: 2px solid black!important;
+    padding: 10px 10px !important;
+    height: auto!important;
+    box-sizing: inherit!important;
+    margin-bottom: 30px;
+    border: none;
+    width: 100%;
+    background: none!important;
+}
+
+.reviews textarea{
+    border: 2px solid black!important;
+    padding: 10px 10px !important;
+    box-sizing: inherit!important;
+    height: auto!important;
+    width: 100%;
+    background: none!important;
+}
+
+.reviews p{
+    width: 100%;
+    font-size: 0.9rem;
+}
+
+.reviews label{
+    width: 50%;
+}
+
+.reviews input.button{
+    width: 30%;
+    border: 2px solid black;
+    background: black!important;
+    color: white;
+}

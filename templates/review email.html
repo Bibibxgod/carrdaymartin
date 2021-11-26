@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+        body {
+            font-family: 'Raleway', sans-serif !important;
+            margin: 0;
+            padding: 50px;
+        }
+
+        input{
+            border-bottom: 2px solid black!important;
+            padding: 10px 10px !important;
+            height: auto!important;
+            box-sizing: inherit!important;
+            margin-bottom: 30px;
+            border: none;
+            width: 100%;
+            background: none!important;
+        }
+
+        label{
+            width: 50%;
+        }
+
+        input.button{
+            width: 30%;
+            border: 2px solid black;
+            background: black!important;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="email">
+        <h3 class="article">Отзыв</h3>
+        <p>Имя: </p>
+        <p>Текст отзыва: </p>
+        <p>ID: </p>
+        <form action="/review/accept/" method="post">
+            <label><span><input class="button" type="submit" value="Не спам"></span></label>
+        </form>
+        <form action="/review/reject/" method="post">
+            <label><span><input class="button" type="submit" value="Спам"></span></label>
+        </form>
+    </section>
+</body>
+
+</html>
