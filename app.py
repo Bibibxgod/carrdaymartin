@@ -124,7 +124,7 @@ def reviews():
 
         from_email = 'carrdaymartinru@gmail.com'
         password = '$VFR4567ygv$'
-        to_email = 'nnakozhemm@gmail.com'
+        to_email = 'muhoed1@mail.ru'
         text = """<!DOCTYPE html>
                         <html lang="en">
 
@@ -238,7 +238,7 @@ def kontakts():
 
         from_email = 'carrdaymartinru@gmail.com'
         password = '$VFR4567ygv$'
-        to_email = 'nnakozhemm@gmail.com'
+        to_email = 'cdm1@mail.ru'
         text = 'Почта: ' + email + '\n' + 'Телефон: ' + telephone + '\n' + \
             'Заголовок: ' + name + '\n' + 'Сообщение: ' + message + '\n'
 
