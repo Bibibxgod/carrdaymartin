@@ -177,8 +177,8 @@ def reviews():
                                 <p>Имя:""" + name + """</p>
                                 <p>Текст отзыва:""" + text + """</p>
                                 <p>ID:""" + reviewId + """</p> 
-                                    <a class="button" href="http://https://servercarrdaymartin.herokuapp.com/review/accept/""" + reviewId + """">Не Cпам</a>
-                                    <a class="button" href="http://https://servercarrdaymartin.herokuapp.com/review/reject/""" + reviewId + """">Cпам</a> 
+                                    <a class="button" href="https://servercarrdaymartin.herokuapp.com/review/accept/""" + reviewId + """">Не Cпам</a>
+                                    <a class="button" href="https://servercarrdaymartin.herokuapp.com/review/reject/""" + reviewId + """">Cпам</a> 
                             </section>
                         </body>
 
