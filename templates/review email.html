@@ -30,8 +30,21 @@
             width: 50%;
         }
 
-        input.button{
+        a.button{
+            background-color: #000;
+            border-radius: 0;
+            box-shadow: none;
+            height: auto;
+            padding: 10px 35px;
+            margin-right: 10px;
+            color: white;
+            font-size: 1.1rem;
+            text-decoration: none;
+        }
+
+        button.button{
             width: 30%;
+            height: 100px;
             border: 2px solid black;
             background: black!important;
             color: white;
@@ -45,12 +58,8 @@
         <p>Имя: </p>
         <p>Текст отзыва: </p>
         <p>ID: </p>
-        <form action="/review/accept/" method="post">
-            <label><span><input class="button" type="submit" value="Не спам"></span></label>
-        </form>
-        <form action="/review/reject/" method="post">
-            <label><span><input class="button" type="submit" value="Спам"></span></label>
-        </form>
+        <a class="button" href="http://127.0.0.1:5000/review/reject/">Не спам</a>
+        <a class="button" href="http://127.0.0.1:5000/review/reject/">спам</a>
     </section>
 </body>
 

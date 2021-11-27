@@ -4,7 +4,6 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from datetime import datetime
-from email.message import EmailMessage
 
 app = Flask(__name__)
 app.secret_key = 'zxczxczxczxc'
@@ -79,19 +78,35 @@ def product_card(Type, id):
 def history():
     return render_template('history.html')
 
+@app.route('/review/accept/<string:id>')
+def review_accept(id):
+    review = Reviews.query.get(id)
+    
+    review.spam = True
+
+    db.session.commit()
+    
+    return render_template('reviews.html')
+
 @app.route('/review/reject/<string:id>')
 def review_reject(id):
     review = Reviews.query.get_or_404(id)
-    if request.method == 'POST':
-        db.session.delete(review)
-        db.session.commit()
-    return render_template('reviews.html')
+
+    db.session.delete(review)
+    db.session.commit()
+    
+    return redirect(url_for('http://127.0.0.1:5000/reviews'))
 
 @app.route('/reviews', methods=['POST', 'GET'])
-def explore():
+def reviews():
+
     if request.method == 'POST':
         text = request.form['text']
         name = request.form['name']
+        
+        if len(name and text) == 0:
+            flash('Все поля обязательны')
+            return redirect(request.url)
         
         reviews = Reviews(name=name, text=text)
         
@@ -105,7 +120,7 @@ def explore():
                 reviewId = str(el.id)
         
         msg = MIMEMultipart()
-        email = EmailMessage()
+        msg['Subject'] = 'Отзыв от ' + name  
 
         from_email = 'carrdaymartinru@gmail.com'
         password = '$VFR4567ygv$'
@@ -142,11 +157,16 @@ def explore():
                                     width: 50%;
                                 }
 
-                                input.button{
-                                    width: 30%;
-                                    border: 2px solid black;
-                                    background: black!important;
+                                a.button{
+                                    background-color: #000;
+                                    border-radius: 0;
+                                    box-shadow: none;
+                                    height: auto;
+                                    padding: 10px 35px;
+                                    margin-right: 10px;
                                     color: white;
+                                    font-size: 1.1rem;
+                                    text-decoration: none;
                                 }
                             </style>
                         </head>
@@ -156,21 +176,13 @@ def explore():
                                 <h3 class="article">Отзыв</h3>
                                 <p>Имя:""" + name + """</p>
                                 <p>Текст отзыва:""" + text + """</p>
-                                <p>ID:""" + reviewId + """</p>
-                                <form action="/review/accept/""" + reviewId + """" method="post">
-                                    <label><span><input class="button" type="submit" value="Не спам"></span></label>
-                                </form>
-                                <form action="/review/reject/""" + reviewId + """"  method="post">
-                                    <label><span><input class="button" type="submit" value="Спам"></span></label>
-                                </form>
+                                <p>ID:""" + reviewId + """</p> 
+                                    <a class="button" href="http://127.0.0.1:5000/review/accept/""" + reviewId + """">Не Cпам</a>
+                                    <a class="button" href="http://127.0.0.1:5000/review/reject/""" + reviewId + """">Cпам</a> 
                             </section>
                         </body>
 
                         </html>"""
-
-        if len(name or text) == 0:
-            flash('Это поле обязательно')
-            return redirect(request.url)
 
         msg.attach(MIMEText(text, 'html'))
         server = smtplib.SMTP('smtp.gmail.com: 587')
@@ -180,9 +192,10 @@ def explore():
         server.quit()
         
         return redirect(request.url)
-        
     
-    return render_template('reviews.html')
+    reviews = Reviews.query.all()    
+    
+    return render_template('reviews.html' , reviews=reviews)
 
 
 @app.route('/create', methods=['POST', 'GET'])
@@ -221,6 +234,7 @@ def kontakts():
         message = request.form['message']
 
         msg = MIMEMultipart()
+        msg['Subject'] = 'Обратная связь от ' + name
 
         from_email = 'carrdaymartinru@gmail.com'
         password = '$VFR4567ygv$'

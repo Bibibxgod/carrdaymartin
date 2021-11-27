@@ -345,6 +345,9 @@ main .top-banner .gradient {
 
 .top-banner .btn:hover {
   background-color: black;
+}
+
+.top-banner .btn:hover a{
   color: white;
 }
 
@@ -598,5 +601,5 @@ h3.article{
 }
 
 footer a:hover{
-  color: #f1f1f1;
+  color: gray;
 }

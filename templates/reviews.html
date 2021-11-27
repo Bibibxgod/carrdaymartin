@@ -11,32 +11,54 @@
 {% block body %}
 <section class="reviews">
     <div class="container-big">
-        <div class="content block">
-            <p></p>
+        <h3 class="article">Отзывы</h3>
+        {% for el in reviews %}
+                {% if el.spam == True %}
+                <div class="content block">
+                    <h5>{{ el.name }}</h5>
+                    <p>{{ el.text }}</p>
+                </div>
+                {% endif %}
+        {% endfor %}
+        <div class="create review">
+            {% with messages = get_flashed_messages() %}
+                      {% if messages %}
+                        
+                         {% for message in messages %}
+                          <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <p class="kontakts-alert">{{ message }}</p>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span class="alert dismiss" aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                         {% endfor %}
+                      
+                      {% endif %}
+                    {% endwith %}
+            <form action="/reviews" method="post">
+                <p>
+                    <label>
+                        <span>
+                            <input type="text" name="name" id="name" placeholder="Ваше имя">
+                            <br>
+                        </span>
+                    </label>
+                    <label>
+                        <span>
+                            <textarea type="text" name="text" id="text" placeholder="Текст отзыва" cols="20" rows="5"></textarea>
+                            <br>
+                        </span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <span>
+                            <input class="button" type="submit" value="Отправить">
+                        </span>
+                    </label>
+                </p>
+            </form>
         </div>
-        <form action="/reviews" method="post">
-            <p>
-                <label>
-                    <span>
-                        <input type="text" name="name" id="name" placeholder="Ваше имя">
-                        <br>
-                    </span>
-                </label>
-                <label>
-                    <span>
-                        <textarea type="text" name="text" id="text" placeholder="Отзыв" cols="20" rows="5"></textarea>
-                        <br>
-                    </span>
-                </label>
-            </p>
-            <p>
-                <label>
-                    <span>
-                        <input class="button" type="submit" value="send">
-                    </span>
-                </label>
-            </p>
-        </form>
     </div>
 </section>
 {% endblock %}
