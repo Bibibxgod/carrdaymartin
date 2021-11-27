@@ -95,7 +95,7 @@ def review_reject(id):
     db.session.delete(review)
     db.session.commit()
     
-    return redirect(url_for('http://127.0.0.1:5000/reviews'))
+    return redirect(url_for('https://servercarrdaymartin.herokuapp.com/reviews'))
 
 @app.route('/reviews', methods=['POST', 'GET'])
 def reviews():
@@ -177,8 +177,8 @@ def reviews():
                                 <p>Имя:""" + name + """</p>
                                 <p>Текст отзыва:""" + text + """</p>
                                 <p>ID:""" + reviewId + """</p> 
-                                    <a class="button" href="http://127.0.0.1:5000/review/accept/""" + reviewId + """">Не Cпам</a>
-                                    <a class="button" href="http://127.0.0.1:5000/review/reject/""" + reviewId + """">Cпам</a> 
+                                    <a class="button" href="http://https://servercarrdaymartin.herokuapp.com/review/accept/""" + reviewId + """">Не Cпам</a>
+                                    <a class="button" href="http://https://servercarrdaymartin.herokuapp.com/review/reject/""" + reviewId + """">Cпам</a> 
                             </section>
                         </body>
 
