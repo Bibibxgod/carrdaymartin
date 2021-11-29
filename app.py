@@ -86,7 +86,7 @@ def review_accept(id):
 
     db.session.commit()
     
-    return render_template('reviews.html')
+    return render_template('accept.html')
 
 @app.route('/review/reject/<string:id>')
 def review_reject(id):
@@ -95,7 +95,7 @@ def review_reject(id):
     db.session.delete(review)
     db.session.commit()
     
-    return redirect(url_for('https://servercarrdaymartin.herokuapp.com/reviews'))
+    return render_template('reject.html')
 
 @app.route('/reviews', methods=['POST', 'GET'])
 def reviews():
@@ -261,4 +261,4 @@ def kontakts():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
